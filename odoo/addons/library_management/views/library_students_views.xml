@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem id="menu_students" name="Student" parent="menu_library_main" />
+		<record id="view_library_students_tree" model="ir.ui.view">
+			<field name="name">library.studentstree.view</field>
+			<field name="model">library.management</field>
+			<field name="priority">4</field>
+			<field name="arch" type="xml">
+				<tree string="Library students">
+					<field name="name"/>
+					<field name="course"/>
+					<field name="address"/>
+					<field name="mobile_no"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_library_students_form" model="ir.ui.view">
+			<field name="name">library.studentsform.view</field>
+			<field name="model">library.management</field>
+			<field name="arch" type="xml">
+				<form string="Library Students">
+					<header>
+						<button name="action_confirm" string="Confirm"  type="object" class="oe_highlight">
+
+						</button>
+						<button name="%(library_management.action_library_book)d" string="BOOKS" type="action" class="oe_highlight">
+
+						</button>
+					</header>
+					<sheet>
+						<group>
+							<group>
+								<field name="roll_no"/>
+								<field name="name"/>
+								<field name="date_of_birth" force_save="1"/>
+								<field name="age"/>
+								</group>
+									<group>
+									<field name="address"/>
+									<field name="mobile_no"/>
+									<field name="course"/>
+										<field name="std"/>
+								</group>
+							</group>
+						<notebook>
+							<page string="More info" name="more info">
+								<group>
+									<group>
+<!--										<field name="name"/>-->
+<!--										<field name="address"/>-->
+<!--										<field name ="address"/>-->
+										<field name="product_id"/>
+									</group>
+								</group>
+							</page>
+							<page string="Book info">
+								<group>
+									<group>
+									</group>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!--Sreach_views<-->
+		<record id="library_students_search" model="ir.ui.view">
+			<field name="name">library.students.search</field>
+			<field name="model">library.management</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<field name="roll_no"/>
+					<field name="course"/>
+					<filter string="Information Technology" domain="[('course', '=', 'information technology')]" name="course"/>
+					<filter string="Computer Engineering" domain="[('course', '=', 'computer Engineering')]" name="course"/>
+					<group expand="0" string="Group By">
+                        <filter string="name" name="name" domain="[]" context="{'group_by':'name'}"/>
+                        <filter string="roll_no" name="roll_no" domain="[]" context="{'group_by':'roll_no'}"/>
+                        <filter string="course" name="course" domain="[]" context="{'group_by':'course'}"/>
+                    </group>
+				</search>
+			</field>
+		</record>
+		<!-- Kanban View  -->
+		<record model="ir.ui.view" id="view_library_students_kanban">
+			<field name="name">library.students.kanban</field>
+			<field name="model">library.management</field>
+			<field name="arch" type="xml">
+				<kanban>
+					<field name="roll_no"/>
+					<field name="name"/>
+					<field name="address"/>
+					<field name="mobile_no"/>
+					<field name="course"/>
+					<progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_card oe_kanban_global_click">
+								<div class="o_kanban_record_top mb16">
+									<ul>
+										<li>
+											<field name="roll_no"/>
+										</li>
+										<li>
+											<field name="address"/>
+										</li>
+										<li>
+											<field name="mobile_no"/>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		<record id="action_library_students" model="ir.actions.act_window">
+			<field name="name">Library students</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">library.management</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+                    Create new Library students
+                </p>
+			</field>
+		</record>
+		<menuitem id="menu_library_student" name="Library student" parent="menu_students" action="action_library_students"/>
+	</data>
+</odoo>

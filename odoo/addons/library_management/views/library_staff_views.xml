@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem id="menu_staff" name="Staff" parent="menu_library_main"/>
+		<record id="view_library_staff_tree" model="ir.ui.view">
+			<field name="name">library.staff.view</field>
+			<field name="model">library.staff</field>
+			<field name="priority">3</field>
+			<field name="arch" type="xml">
+				<tree string="Library staff">
+					<field name="name"/>
+					<field name="mobile_no"/>
+					<field name="branch"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_library_staff_form" model="ir.ui.view">
+			<field name="name">library.staffform.view</field>
+			<field name="model">library.staff</field>
+			<field name="arch" type="xml">
+				<form string="Library Book">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="staff"/>
+								<field name="branch"/>
+							</group>
+							<group>
+								<field name="address"/>
+								<field name="mobile_no"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Book info" name="book info">
+								<group>
+									<group>
+										<field name="Books_logs_id"/>
+									</group>
+								</group>
+							</page>
+							<page string="More info" name="More info">
+								<group>
+									<field name ="address"/>
+									<field name="mobile_no"	/>
+								</group>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!--Sreach_views<-->
+		<record id="library_staff_search" model="ir.ui.view">
+			<field name="name">library.staff.search</field>
+			<field name="model">library.staff</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<field name="staff"/>
+					<field name="branch"/>
+					<filter string="Information Technology" name="branch" domain="[('branch', '=','information technology')]"/>
+					<group expand="0" string="Group By">
+						<filter string="name" name="name" domain="[]" context="{'group_by':'name'}"/>
+						<filter string="staff" name="staff" domain="[]" context="{'group_by':'staff'}"/>
+						<filter string="branch" name="branch" domain="[]" context="{'group_by':'branch'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+		<!-- Kanban View  -->
+		<record model="ir.ui.view" id="view_library_staff_kanban">
+			<field name="name">library.staff.kanban</field>
+			<field name="model">library.staff</field>
+			<field name="arch" type="xml">
+				<kanban>
+					<field name="staff"/>
+					<field name="name"/>
+					<field name="branch"/>
+					<field name="mobile_no"/>
+					<field name="address"/>
+					<progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_card oe_kanban_global_click">
+								<div class="o_kanban_record_top mb16">
+									<ul>
+										<li>
+											<field name="staff"/>
+										</li>
+										<li>
+											<field name="name"/>
+										</li>
+										<li>
+											<field name="branch"/>
+										</li>
+										<li>
+											<field name="address"/>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		<record id="action_library_staff" model="ir.actions.act_window">
+			<field name="name">Library staff</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">library.staff</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+                    Create new Library staff!!
+                </p>
+			</field>
+		</record>
+		<menuitem id="menu_library_staff" name="Library staff" parent="menu_staff" action="action_library_staff"/>
+<!--		<menuitem id="menu_library_staff_admin" name="Library staff" parent="library_admin" action="action_library_staff"/>-->
+
+	</data>
+</odoo>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<menuitem id="menu_category" name="Category" parent="menu_library_main"/>
+		<record id="view_library_category_tree" model="ir.ui.view">
+			<field name="name">library.category.view</field>
+			<field name="model">library.category</field>
+			<field name="priority">7</field>
+			<field name="arch" type="xml">
+				<tree string="Category">
+					<field name="name"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_library_category_form" model="ir.ui.view">
+			<field name="name">library.category.form.view</field>
+			<field name="model">library.category</field>
+			<field name="arch" type="xml">
+				<form string="Category">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+							</group>
+							<field name="books_list_ids"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!--Sreach_views<-->
+		<record id="library_category_search" model="ir.ui.view">
+			<field name="name">library.category.search</field>
+			<field name="model">library.category</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<filter string="noval" name="name" domain="[('name', '=','noval')]"/>
+					<filter string="fiction" name="name" domain="[('name', '=','fiction')]"/>
+					<filter string="documnetry" name="name" domain="[('name', '=','documnetry')]"/>
+
+					<group expand="0" string="Group By">
+						<filter string="name" name="name" domain="[]" context="{'group_by':'name'}"/>
+					</group>
+				</search>
+			</field>
+		</record>
+		<!-- Kanban View  -->
+		<record model="ir.ui.view" id="view_library_staff_kanban">
+			<field name="name">library.staff.kanban</field>
+			<field name="model">library.staff</field>
+			<field name="arch" type="xml">
+				<kanban>
+					<field name="name"/>
+					<progressbar field="activity_state" colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+					<templates>
+						<t t-name="kanban-box">
+							<div t-attf-class="oe_kanban_card oe_kanban_global_click">
+								<div class="o_kanban_record_top mb16">
+									<ul>
+										<li>
+											<field name="name"/>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		<record id="action_library_category" model="ir.actions.act_window">
+			<field name="name">Library category</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">library.category</field>
+			<field name="view_mode">tree,form,kanban</field>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+                    Create new Category list.....
+                </p>
+			</field>
+		</record>
+		<menuitem id="menu_library_category" name="Category" parent="menu_category" action="action_library_category"/>
+	</data>
+</odoo>
