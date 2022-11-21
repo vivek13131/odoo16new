@@ -16,7 +16,6 @@ class author(models.Model):
     reg_no = fields.Char(string="Reg_no:")
     phone = fields.Integer(string="Phone_no")
 
-
     def total_action(self):
         total = 0
         for rec in self.book_log_ids:
@@ -39,7 +38,7 @@ class author(models.Model):
 
     def total_search(self):
         total = 0.0
-        amount = self.env['library.books'].search([('author_id','=',self.id)])
+        amount = self.env['library.books'].search([('author_id', '=', self.id)])
         for rec in amount:
             if rec:
                 val = rec.book_price
@@ -48,15 +47,36 @@ class author(models.Model):
 
     @api.depends('book_log_ids.book_price')
     def _compute_total(self):
-        print("==========")
         total = 0
         for rec in self.book_log_ids:
             if rec:
                 val = rec.book_price
                 total += val
         self.total_amount = total
-#sql contraints to check the  name are unique
+
+    # sql contraints to check the  name are unique
     _sql_constraints = [
         ('unique_name_', 'unique (name)', 'The author is already entered !')
     ]
+
+    def create_books(self):
+        books = self.mapped('book_log_ids')
+        action = self.env['ir.actions.actions']._for_xml_id('library_management.action_library_book')
+        if len(books) > 1:
+            action['domain'] = [('id', 'in', books.ids)]
+            print(action['domain'])
+        elif len(books) == 1:
+            form_view = [(self.env.ref('library_management.view_library_book_form').id, 'form')]
+            print(form_view)
+            if 'views' in action:
+                action['views'] = form_view + [(state, view) for state, view in action['views'] if view != 'form']
+            else:
+                action['views'] = form_view
+            action['res_id'] = books.id
+        else:
+            action = {'type': 'ir.actions.act_window_close'}
+        return action
+
+
+
 

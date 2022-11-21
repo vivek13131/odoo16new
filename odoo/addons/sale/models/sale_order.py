@@ -987,6 +987,7 @@ class SaleOrder(models.Model):
         action = self.env['ir.actions.actions']._for_xml_id('account.action_move_out_invoice_type')
         if len(invoices) > 1:
             action['domain'] = [('id', 'in', invoices.ids)]
+            print(action['domain'])
         elif len(invoices) == 1:
             form_view = [(self.env.ref('account.view_move_form').id, 'form')]
             if 'views' in action:

@@ -8,6 +8,7 @@
     'depends': ['base'],
     'data': [
     	'security/ir.model.access.csv',
+        'data/ir_sequence_data.xml',
         'views/library_admin_views.xml',
         'views/library_staff_views.xml',
         'views/library_students_views.xml',
@@ -15,7 +16,7 @@
         'views/library_author_views.xml',
         'views/library_category_views.xml',
         'views/library_fee_views.xml',
-        'views/library_admin_staff_book_views.xml',
+        # 'views/library_admin_staff_book_views.xml',
         
     ],
     'demo': [],

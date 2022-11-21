@@ -24,6 +24,9 @@
 						</button>
                         <button name="total_search" string="Price Total" type="object">
                         </button>
+                        <button name="create_books" string="Create invoice" type="object">
+
+                        </button>
                     </header>
                     <sheet>
                         <group>

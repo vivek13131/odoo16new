@@ -1,6 +1,7 @@
-from odoo import api, fields, models,_
-from odoo .exceptions import ValidationError
+from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 from datetime import datetime
+
 
 class BooksDeatil(models.Model):
     _name = 'library.books'
@@ -18,27 +19,18 @@ class BooksDeatil(models.Model):
     img = fields.Binary(string="image")
     status = fields.Boolean(string="Available")
     book_price = fields.Float(string="Price")
+    item_id = fields.Many2one('library.admin', string="Items")
 
     # student_id = fields.Many2one('library.management',string="Studentname")
     # The author id is connect to one2many moudle author.library
     @api.model
     def create(self, vals):
-        # if 'company_id' in vals:
-        #     self = self.with_company(vals['company_id'])
-        # if vals.get('name', _('New')) == _('New'):
-        #     seq_date = None
-        #     if 'date_order' in vals:
-        #         seq_date = fields.Datetime.context_timestamp(self, fields.Datetime.to_datetime(vals['date_order']))
-        #     vals['name'] = self.env['ir.sequence'].next_by_code('sale.order', sequence_date=seq_date) or _('New')
+        if vals.get('name', _('New')) == _('New'):
+            vals['name'] = self.env['ir.sequence'].next_by_code('library.books') or _('New')
+        print(vals['name'])
         result = super(BooksDeatil, self).create(vals)
-        # print("hello",self,vals)
+        #     print(result)
         return result
-
-    # def write(self, values):
-    #     print(self)
-    #     result = super(BooksDeatil, self).write(values)
-    #     # print(result)
-    #     return result
 
     def unlink(self):
         # print(self)
@@ -49,7 +41,7 @@ class BooksDeatil(models.Model):
     @api.constrains('name')
     def _check_name(self):
         for rec in self:
-            book = self.env['library.books'].search([('name','=',rec.name),('id','!=',rec.id)])
+            book = self.env['library.books'].search([('name', '=', rec.name), ('id', '!=', rec.id)])
             if book:
                 raise ValidationError(_(" the book name is already enter"))
 
@@ -57,3 +49,22 @@ class BooksDeatil(models.Model):
     def _check_date_of_publication(self):
         if self.date_of_publication > fields.Date.today():
             raise ValidationError(_("The publication date is wrong"))
+
+    def books(self):
+        books = self.mapped('author_id')
+        action = self.env['ir.actions.actions']._for_xml_id('library_management.action_library_book')
+
+        if len(books) > 1:
+            action['domain'] = [('id', 'in', books.ids)]
+            print(action['domain'])
+        elif len(books) == 1:
+            form_view = [(self.env.ref('library_management.view_library_book_form').id, 'form')]
+            print(form_view)
+            if 'views' in action:
+                action['views'] = form_view + [(state, view) for state, view in action['views'] if view != 'form']
+            else:
+                action['views'] = form_view
+                action['res_id'] = books.id
+        else:
+            action = {'type': 'ir.actions.act_window_close'}
+        return action
