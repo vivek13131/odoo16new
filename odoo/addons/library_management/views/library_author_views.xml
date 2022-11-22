@@ -27,6 +27,9 @@
                         <button name="create_books" string="Create invoice" type="object">
 
                         </button>
+                        <button type="action" name="%(library_management.library_book_wizard_action)d" string="Book Create">
+
+                        </button>
                     </header>
                     <sheet>
                         <group>

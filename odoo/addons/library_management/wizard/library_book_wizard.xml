@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="library_book_wizard_view_form" model="ir.ui.view">
+		<field name="name">library.book.wizard.form</field>
+		<field name="model">library.bookwizard</field>
+		<field name="arch" type="xml">
+			<form string="Test">
+				<group class="oe_title">
+					<group>
+					<field name="isbn"/>
+					<field name="name"/>
+<!--					<field name="author_id"/>-->
+						</group>
+					<group>
+						<field name="category_id"/>
+						<field name="edition"/>
+						<field name="book_price"/>
+					</group>
+				</group>
+				<footer>
+                    <button name="update_d" type="object"
+                        string="Create Book"
+                        class="btn-primary" data-hotkey="q"/>
+                </footer>
+			</form>
+		</field>
+	</record>
+	<record id="library_book_wizard_action" model="ir.actions.act_window">
+		<field name="name">library.book.wizard</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">library.bookwizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="library_book_wizard_view_form"/>
+		<field name="target">new</field>
+	</record>
+</odoo>

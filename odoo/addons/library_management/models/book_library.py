@@ -47,8 +47,12 @@ class BooksDeatil(models.Model):
 
     @api.constrains('date_of_publication')
     def _check_date_of_publication(self):
+        if self.date_of_publication:
+            raise ValidationError(_("Enter the date of publication"))
         if self.date_of_publication > fields.Date.today():
             raise ValidationError(_("The publication date is wrong"))
+
+
 
     def books(self):
         books = self.mapped('author_id')
