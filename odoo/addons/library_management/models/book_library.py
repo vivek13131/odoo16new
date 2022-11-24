@@ -38,12 +38,12 @@ class BooksDeatil(models.Model):
         print(result)
         return result
 
-    @api.constrains('name')
-    def _check_name(self):
-        for rec in self:
-            book = self.env['library.books'].search([('name', '=', rec.name), ('id', '!=', rec.id)])
-            if book:
-                raise ValidationError(_(" the book name is already enter"))
+    # @api.constrains('name')
+    # def _check_name(self):
+    #     for rec in self:
+    #         book = self.env['library.books'].search([('name', '=', rec.name), ('id', '!=', rec.id)])
+    #         if book:
+    #             raise ValidationError(_(" the book name is already enter"))
 
     @api.constrains('date_of_publication')
     def _check_date_of_publication(self):

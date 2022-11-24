@@ -28,7 +28,6 @@ class StudentsDetails(models.Model):
 
     @api.model
     def create(self, vals):
-
         dob = [vals]
         dates = vals['date_of_birth']
         if vals['date_of_birth']:

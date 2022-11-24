@@ -18,6 +18,11 @@
 			<field name="arch" type="xml">
 				<form string="Library Book">
 					<sheet>
+						<header>
+							<button  >
+
+							</button>
+						</header>
 						<group>
 							<group>
 								<field name="name_id"/>

@@ -9,7 +9,6 @@
 					<group>
 					<field name="isbn"/>
 					<field name="name"/>
-<!--					<field name="author_id"/>-->
 						</group>
 					<group>
 						<field name="category_id"/>

@@ -24,9 +24,9 @@
 			<field name="arch" type="xml">
 				<form string="Library Book">
 					<header>
-						<button name="books" string="books" type="object">
+						 <button type="action" name="%(library_management.library_book_wizard_action)d" string="Book Create">
 
-						</button>
+                        </button>
 					</header>
 					<sheet>
 						 <div class="oe_title">
