@@ -14,4 +14,3 @@ class Staff(models.Model):
         ('information technology', 'INFOMARTION TECHNOLOGY'),
     ], string='Branch')
     Books_logs_id = fields.Many2many('library.books', string="Book info")
-

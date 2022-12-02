@@ -26,8 +26,8 @@ class author(models.Model):
 
     def add_Book(self):
         vals = {
-            'isbn': 12342,
-            'name': 'oru',
+            'isbn': 87898,
+            'name': 'self',
             'author_id': self.id,
             'category_id': 1,
             'edition_mark': 1,
@@ -76,7 +76,3 @@ class author(models.Model):
         else:
             action = {'type': 'ir.actions.act_window_close'}
         return action
-
-
-
-

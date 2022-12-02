@@ -24,6 +24,7 @@ class StudentsDetails(models.Model):
     book_taken = fields.Datetime(string="BOOK TAKEN DATE")
     book_return = fields.Datetime(string="BOOK RETURN DATE")
     fee = fields.Integer(string="FEE for Late ")
+
     # add_book_ids = fields.One2many('library.books', 'book_name_id', string="Book list")
 
     @api.model
@@ -76,4 +77,3 @@ class StudentsDetails(models.Model):
         print("-----------------------", dates)
         self.age = datetime.today().year - dates
         print(self.age)
-

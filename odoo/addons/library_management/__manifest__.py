@@ -18,6 +18,9 @@
         'views/library_fee_views.xml',
         # 'views/library_admin_staff_book_views.xml',
         'wizard/library_book_wizard.xml',
+        'wizard/library_students_wizard.xml',
+        'report/ir_actions_report.xml',
+        'report/author_template.xml',
         
     ],
     'demo': [],

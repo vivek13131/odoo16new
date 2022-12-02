@@ -8,6 +8,8 @@ access_library_category_user,access.library.category.user,model_library_category
 access_library_fee_user,access.library.fee.user,model_library_fee,,1,1,1,1
 access_library_admin_staff_user,access.libraryadminstaff.book.user,model_libraryadminstaff_book,,1,1,1,1
 access_library_book_wizard_user,access.library.bookwizard.user,model_library_bookwizard,,1,1,1,1
+access_library_students_wizard_user,access.library.studentswizard.user,model_library_studentswizard,,1,1,1,1
+
 
 
 

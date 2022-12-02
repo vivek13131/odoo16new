@@ -17,12 +17,12 @@
 			<field name="model">library.admin</field>
 			<field name="arch" type="xml">
 				<form string="Library Book">
-					<sheet>
-						<header>
-							<button  >
-
+					<header>
+							<button type="action" name="%(library_management.library_students_wizard_action)d" string="Edit">
 							</button>
 						</header>
+					<sheet>
+
 						<group>
 							<group>
 								<field name="name_id"/>
