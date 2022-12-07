@@ -4,7 +4,7 @@ from datetime import datetime
 
 class sale_inherit(models.Model):
     _inherit = 'sale.order'
-    sale_date = fields.Char(string="Sale Date")
+    sale_date = fields.Date(string="Sale Date")
     coust_ids = fields.One2many('customer.inherit', 'user_id', string="Coustomer lines")
 
     def sale_price(self):

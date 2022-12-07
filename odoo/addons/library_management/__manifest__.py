@@ -7,7 +7,9 @@
     This module contains all the common features of library management""",
     'depends': ['base'],
     'data': [
-    	'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'security/res_groups.xml',
+
         'data/ir_sequence_data.xml',
         'views/library_admin_views.xml',
         'views/library_staff_views.xml',
@@ -21,7 +23,7 @@
         'wizard/library_students_wizard.xml',
         'report/ir_actions_report.xml',
         'report/author_template.xml',
-        
+
     ],
     'demo': [],
     'installable': True,

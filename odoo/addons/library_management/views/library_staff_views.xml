@@ -9,6 +9,7 @@
 			<field name="arch" type="xml">
 				<tree string="Library staff">
 					<field name="name"/>
+
 					<field name="mobile_no"/>
 					<field name="branch"/>
 				</tree>
@@ -23,6 +24,7 @@
 						<group>
 							<group>
 								<field name="name"/>
+								<field name="user_id"/>
 								<field name="staff"/>
 								<field name="branch"/>
 							</group>

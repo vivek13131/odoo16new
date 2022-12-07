@@ -8,6 +8,7 @@ class StudentsDetails(models.Model):
     _description = "library Students"
 
     roll_no = fields.Integer(string='Roll Number')
+    user_id = fields.Many2one('res.users',string="Resposblity")
     name = fields.Char(string='Name')
     address = fields.Text(string='Address')
     mobile_no = fields.Char(string='Mobile Number')

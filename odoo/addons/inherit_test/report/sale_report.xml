@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_order_report" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='row mt-4 mb-4']" position="after">
+            <div class="col-auto col-3 mw-100 mb-2" id="sale_report">
+                <strong>Sale Date:</strong>
+                <p class="m-0" t-field="doc.sale_date"/>
+            </div>
+        </xpath>
+         <xpath expr="//th[@name='th_taxes']" position="after">\
+            <th name="th_sale_price" class="text-end">Sale Price</th>
+        </xpath>
+
+        <xpath expr="//td[@name='td_subtotal']" position="before">
+        <td class="text-end">
+            <t t-esc="line.sale_price"/>
+        </td>
+        </xpath>
+    </template>
+</odoo>

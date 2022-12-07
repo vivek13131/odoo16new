@@ -11,6 +11,7 @@
         'wizard/sale_inherit_wizard.xml',
         'views/sale_inherit.xml',
         'views/sale_order_line_inherit.xml',
+        'report/sale_report.xml',
 
     ],
     'demo': [],
