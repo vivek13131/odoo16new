@@ -14,13 +14,20 @@
         <field name="model_id" ref="library_management.model_library_management"/>
         <field name="domain_force">[('user_id','=',user.id)]</field>
         <field name="groups" eval="[(4, ref('library_management.group_library_management'))]"/>
+
         <field name="perm_unlink" eval="1"/>
+        <field name="perm_unlink" eval="True"/>
+
+
+        <field name="perm_unlink" eval="1"/>
+
         <field name="perm_unlink" eval="True"/>
 
         <field name="perm_write" eval="True"/>
         <field name="perm_read" eval="True"/>
         <field name="perm_create" eval="False"/>
     </record>
+
 
       <record id="librar_recode_limit" model="ir.rule">
         <field name="name">library students</field>
@@ -32,7 +39,6 @@
         <field name="perm_read" eval="True"/>
         <field name="perm_create" eval="False"/>
     </record>
-
 
 
 </odoo>
