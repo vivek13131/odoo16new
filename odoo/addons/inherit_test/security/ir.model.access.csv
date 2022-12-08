@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_customer_inherit_user,access.customer.inherit.user,model_customer_inherit,,1,1,1,1
+access_sale_inheritwizard_user,access.sale.inheritwizard.user,model_sale_inheritwizard,,1,1,1,1
+
+
+
