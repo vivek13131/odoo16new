@@ -8,6 +8,7 @@ class StudentsDetails(models.Model):
     _description = "library Students"
 
     roll_no = fields.Integer(string='Roll Number')
+    user_id = fields.Many2one('res.users',string="Resposblity")
     name = fields.Char(string='Name')
     address = fields.Text(string='Address')
     mobile_no = fields.Char(string='Mobile Number')
@@ -24,6 +25,7 @@ class StudentsDetails(models.Model):
     book_taken = fields.Datetime(string="BOOK TAKEN DATE")
     book_return = fields.Datetime(string="BOOK RETURN DATE")
     fee = fields.Integer(string="FEE for Late ")
+
     # add_book_ids = fields.One2many('library.books', 'book_name_id', string="Book list")
 
     @api.model
@@ -76,4 +78,3 @@ class StudentsDetails(models.Model):
         print("-----------------------", dates)
         self.age = datetime.today().year - dates
         print(self.age)
-

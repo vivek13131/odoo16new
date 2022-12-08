@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="library_students_wizard_view_form" model="ir.ui.view">
+		<field name="name">library.students.wizard.form</field>
+		<field name="model">library.studentswizard</field>
+		<field name="arch" type="xml">
+			<form string="Students">
+				<group class="oe_title">
+					<group>
+					<field name="roll_no"/>
+					<field name="name"/>
+                    <field name="date_of_birth"/>
+                    <field name="age"/>
+						</group>
+					<group>
+                        <field name="address"/>
+						<field name="mobile_no"/>
+                        <field name="course"/>
+						<field name="std"/>
+					</group>
+				</group>
+				<footer>
+                    <button name="edit" type="object"
+                        string="update"
+                        class="btn-primary" data-hotkey="q"/>
+                </footer>
+			</form>
+		</field>
+	</record>
+	<record id="library_students_wizard_action" model="ir.actions.act_window">
+		<field name="name">library.students</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">library.studentswizard</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="library_students_wizard_view_form"/>
+		<field name="target">new</field>
+	</record>
+</odoo>

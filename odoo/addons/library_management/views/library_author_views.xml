@@ -42,6 +42,7 @@
                             </group>
                             <group>
                                 <field name="biography"/>
+                                <field name="res_user"/>
                             </group>
                         </group>
                         <notebook>

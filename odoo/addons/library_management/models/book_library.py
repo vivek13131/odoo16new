@@ -20,6 +20,7 @@ class BooksDeatil(models.Model):
     status = fields.Boolean(string="Available")
     book_price = fields.Float(string="Price")
     item_id = fields.Many2one('library.admin', string="Items")
+    ref_no = fields.Char(string='refnumber')
 
     # student_id = fields.Many2one('library.management',string="Studentname")
     # The author id is connect to one2many moudle author.library

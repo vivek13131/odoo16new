@@ -15,6 +15,7 @@ class author(models.Model):
     book_log_ids = fields.One2many('library.books', 'author_id', string="Book log")
     reg_no = fields.Char(string="Reg_no:")
     phone = fields.Integer(string="Phone_no")
+    res_user = fields.Many2one('res.users', string="related user")
 
     def total_action(self):
         total = 0
@@ -26,8 +27,8 @@ class author(models.Model):
 
     def add_Book(self):
         vals = {
-            'isbn': 12342,
-            'name': 'oru',
+            'isbn': 87898,
+            'name': 'self',
             'author_id': self.id,
             'category_id': 1,
             'edition_mark': 1,
@@ -76,7 +77,3 @@ class author(models.Model):
         else:
             action = {'type': 'ir.actions.act_window_close'}
         return action
-
-
-
-

@@ -7,6 +7,7 @@ class Staff(models.Model):
     # _rec_name = 'address'
 
     staff = fields.Integer(string="Staff ID")
+    user_id = fields.Many2one('res.users',string='user')
     name = fields.Char(string='Name')
     address = fields.Text(string='Address')
     mobile_no = fields.Integer(string='Mobile Number')
@@ -14,4 +15,3 @@ class Staff(models.Model):
         ('information technology', 'INFOMARTION TECHNOLOGY'),
     ], string='Branch')
     Books_logs_id = fields.Many2many('library.books', string="Book info")
-
