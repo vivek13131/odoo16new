@@ -20,14 +20,16 @@ class BooksDeatil(models.Model):
     status = fields.Boolean(string="Available")
     book_price = fields.Float(string="Price")
     item_id = fields.Many2one('library.admin', string="Items")
+    ref_no = fields.Char(string="squence")
+
 
     # student_id = fields.Many2one('library.management',string="Studentname")
     # The author id is connect to one2many moudle author.library
     @api.model
     def create(self, vals):
-        if vals.get('name', _('New')) == _('New'):
-            vals['name'] = self.env['ir.sequence'].next_by_code('library.books') or _('New')
-        print(vals['name'])
+        if vals.get('ref_no', _('New')) == _('New'):
+            vals['ref_no'] = self.env['ir.sequence'].next_by_code('library.books') or _('New')
+        print(vals['ref_no'])
         result = super(BooksDeatil, self).create(vals)
         #     print(result)
         return result
@@ -48,11 +50,8 @@ class BooksDeatil(models.Model):
     @api.constrains('date_of_publication')
     def _check_date_of_publication(self):
         if self.date_of_publication:
-            raise ValidationError(_("Enter the date of publication"))
-        if self.date_of_publication > fields.Date.today():
-            raise ValidationError(_("The publication date is wrong"))
-
-
+            if self.date_of_publication > fields.Date.today():
+                raise ValidationError(_("The publication date is wrong"))
 
     def books(self):
         books = self.mapped('author_id')

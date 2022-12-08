@@ -9,6 +9,7 @@
 			<field name="arch" type="xml">
 				<tree string="Library students">
 					<field name="name"/>
+
 					<field name="course"/>
 					<field name="address"/>
 					<field name="mobile_no"/>
@@ -31,6 +32,7 @@
 					<sheet>
 						<group>
 							<group>
+								<field name="user_id"/>
 								<field name="roll_no"/>
 								<field name="name"/>
 								<field name="date_of_birth" force_save="1"/>

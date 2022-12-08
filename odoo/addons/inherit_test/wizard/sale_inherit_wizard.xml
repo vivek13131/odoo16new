@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_inherit_wizard_view_form" model="ir.ui.view">
+        <field name="name">sale.inherit.wizard.form</field>
+        <field name="model">sale.inheritwizard</field>
+        <field name="arch" type="xml">
+            <form string="Customer">
+                <group class="oe_title">
+                    <group>
+                        <field name="date"/>
+                        <field name="text"/>
+                    </group>
+                    <group></group>
+                </group>
+                <footer>
+                    <button name="update" type="object"
+                            string="update"
+                            class="btn-primary" data-hotkey="q"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record id="sale_inherit_wizard_action" model="ir.actions.act_window">
+        <field name="name">sale inherit</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.inheritwizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sale_inherit_wizard_view_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

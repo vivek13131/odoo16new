@@ -18,14 +18,13 @@ class Library(models.Model):
         for rec in self:
             lines = []
             for book in self.books_items:
-                print(book)
-            vals = {
-                    'name': book.name,
-                    'category_id':1,
-                    'book_price': book.book_price,
-                }
-            lines.append((0,0,vals))
-            rec.books_ids = lines
+                vals = {
+                        'name': book.name,
+                        'category_id': 1,
+                        'book_price': book.book_price,
+                    }
+                lines.append((0,0,vals))
+                rec.books_ids = lines
 
     @api.onchange('name_id')
     def _onchange_name_id(self):

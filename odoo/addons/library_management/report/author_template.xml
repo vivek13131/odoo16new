@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<template id="author_report_library">
+		<t t-foreach="docs" t-as="o">
+			<t t-call="web.html_container">
+				<t t-call="web.external_layout">
+					<div class="page">
+						<h2>
+							<strong>Name:</strong>
+							<span t-field="o.name"/>
+						</h2>
+						<div>
+							<strong>Biography:</strong>
+							<span t-field="o.biography"/>
+							<br></br>
+							<br></br>
+							<br></br>
+							<br></br>
+						</div>
+						<table class="table" broader="3">
+							<thead>
+								<tr>
+									<th class="text-start">Book name</th>
+									<th class="text-start">Author</th>
+									<th class="text-start">Category</th>
+									<th class="text-end">Edition</th>
+									<th class="text-end">Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr t-foreach='o.book_log_ids' t-as='line'>
+									<td class="text-right">
+										<span t-esc="line.name"/>
+									</td>
+									<td class="text-right">
+										<span t-esc="line.author_id.name"/>
+									</td>
+									<td class="text-right">
+										<span t-esc="line.category_id.name"/>
+									</td>
+									<td class="text-end">
+										<span t-esc="line.edition_mark"/>
+									</td>
+									<td class="text-end">
+										<span t-esc="line.book_price"/>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="total">
+							<p align="right">
+                            Total Amount :
+
+								<t t-esc="o.total_amount"/>
+							</p>
+						</div>
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

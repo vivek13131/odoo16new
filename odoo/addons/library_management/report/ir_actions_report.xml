@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_author" model="ir.actions.report">
+        <field name="name">Author/author</field>
+        <field name="model">library.author</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">library_management.author_report_library</field>
+        <field name="report_file">library_management.author_report_library</field>
+        <field name="binding_model_id" ref="library_management.model_library_author"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
